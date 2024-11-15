@@ -6,16 +6,12 @@
         "Datos_Informativos",
         "Names.xlsx"
     ],
-    "sheet_name": "agosto24",
+    "sheet_name": "octubre24",
+    "screenshot_path": "screenshots",
     "chrome_driver_path": "C:/WebDriver/chromedriver.exe",
     "edge_driver_path": "C:/WebDriver/msedgedriver.exe",
     "firefox_driver_path": "C:/WebDriver/geckodriver.exe",
-    "max_retries": 2,
+    "max_retries": 3,
     "timeout": 10,
-    "cant_hilos": 5,
-    "output_csv": "C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Talon_BOT\\agosto24\\Duas_procesados_agosto24.csv",
-    "failed_duas": "C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Talon_BOT\\agosto24\\DUAs_fallidas_agosto24.txt",
-    "no_rows_duas": "C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Talon_BOT\\agosto24\\DUAs_sin_filas_agosto24.txt",
-    "extracted_file_path": "data\\Datos_Cargados\\agosto24.xlsx",
-    "max_index_processed_agosto24": -1
+    "cant_hilos": 5
 }
