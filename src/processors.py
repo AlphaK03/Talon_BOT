@@ -93,11 +93,6 @@ class DUAProcessor:
             self.set_current_dua(dua_number, row)
             # logging.info(f"Procesando DUA {dua_number}...")
 
-            max_retries = self.config['max_retries']
-            retries_main = 0
-            retries_impuestos = 0
-            retries_data = 0
-
             page_stage = "main"
 
             while not self.stop_event.is_set():
@@ -107,7 +102,6 @@ class DUAProcessor:
                             break  # Salir si falla el procesamiento
                         else:
                             page_stage = "impuestos"
-                            retries_main = 0
 
                     if self.stop_event.is_set():
                         return
@@ -117,7 +111,6 @@ class DUAProcessor:
                             break
                         else:
                             page_stage = "data"
-                            retries_impuestos = 0
 
                     if self.stop_event.is_set():
                         return
@@ -126,7 +119,6 @@ class DUAProcessor:
                         if not self.process_data_extraction_page(dua_number):
                             break
                         else:
-                            retries_data = 0
                             with self.lock:
                                 if index > self.max_index_processed:
                                     self.max_index_processed = index
@@ -240,7 +232,7 @@ class DUAProcessor:
 
             while retry_count < max_retries and not self.stop_event.is_set():
                 try:
-                    # Establecer el zoom de la página al 25% para que todo sea visible sin scroll
+                    # Establecer el zoom de la página al 25% para que todO sea visible sin scroll
                     set_zoom_level(self.driver, 25)
 
                     # Comprobar si estamos en la página principal (posiblemente debido a un captcha)
@@ -299,26 +291,25 @@ class DUAProcessor:
         if self.stop_event.is_set():
             return False
         try:
-            # Establecer el zoom de la página al 25% para que todo sea visible sin scroll
             set_zoom_level(self.driver, 25)
             # Esperar a que la tabla 'Sftributos1ContainerTbl' esté presente
-            table_element = WebDriverWait(self.driver, self.config['timeout']).until(
+            WebDriverWait(self.driver, self.config['timeout']).until(
                 EC.presence_of_element_located((By.ID, 'Sftributos1ContainerTbl'))
             )
+            time.sleep(1)  # Pausa corta para asegurarnos que la página esté cargada
             new_data = self.extract_important_data(dua_number)
             if new_data is None:
-                logging.error(f"No se pudo extraer información de la página del DUA {dua_number}")
-                self.log_failed_dua(dua_number)
-                return False
+                logging.info(f"DUA {dua_number} no tiene datos en la página.")
+                self.log_dua_no_rows(dua_number)
+                return True
             del new_data
             gc.collect()
             return True
 
         except NoRowsException as e:
-            # Manejar el caso donde no se encontraron filas
             logging.info(f"DUA {dua_number} sin filas en la tabla de datos.")
             self.log_dua_no_rows(dua_number)
-            return True  # Indicar que el procesamiento se completó (no reintentar)
+            return True
 
         except Exception as e:
             logging.exception(f"Error en la página de extracción de datos para DUA {dua_number}: {e}")
@@ -326,27 +317,54 @@ class DUAProcessor:
             return False
 
     def extract_important_data(self, dua_number):
+        """
+        Extrae los datos importantes de la página de detalle (después de hacer clic en DETALLE)
+        y retorna un DataFrame con la información requerida. Se asegura de que el número del DUA
+        (compuesto por los spans 'span_CODI_ADUAN_0001', 'span_ANO_PRESE_0001' y 'span_NUME_CORRE_0001')
+        se extraiga directamente de la página.
+        """
         if self.stop_event.is_set():
             return None
         try:
+            # Esperar a que los elementos del número del DUA estén presentes
+            WebDriverWait(self.driver, self.config['timeout']).until(
+                EC.presence_of_element_located((By.ID, 'span_CODI_ADUAN_0001'))
+            )
+            WebDriverWait(self.driver, self.config['timeout']).until(
+                EC.presence_of_element_located((By.ID, 'span_ANO_PRESE_0001'))
+            )
+            WebDriverWait(self.driver, self.config['timeout']).until(
+                EC.presence_of_element_located((By.ID, 'span_NUME_CORRE_0001'))
+            )
+
             current_page_source = self.driver.page_source
             soup = BeautifulSoup(current_page_source, 'html.parser')
-            table = soup.find('table', {'id': 'Sftributos1ContainerTbl'})
 
+            # Extraer el número del DUA desde la página
+            codigo_elem = soup.find('span', id='span_CODI_ADUAN_0001')
+            ano_elem = soup.find('span', id='span_ANO_PRESE_0001')
+            numero_elem = soup.find('span', id='span_NUME_CORRE_0001')
+
+            if codigo_elem is None or ano_elem is None or numero_elem is None:
+                logging.error("No se pudo extraer el número del DUA de la página, a pesar de haber esperado.")
+                raise NoRowsException("Número del DUA no encontrado en la página.")
+
+            numero_del_dua = f"{codigo_elem.get_text(strip=True)}-{ano_elem.get_text(strip=True)}-{numero_elem.get_text(strip=True)}"
+            logging.info(f"Número del DUA extraído: {numero_del_dua}")
+
+            # Extraer la tabla de impuestos
+            table = soup.find('table', {'id': 'Sftributos1ContainerTbl'})
             if table is None:
                 logging.error(f"No se encontró la tabla 'Sftributos1ContainerTbl' en el DUA {dua_number}.")
                 self.log_failed_dua(dua_number)
                 raise NoRowsException(f"Tabla no encontrada para el DUA {dua_number}")
 
-            rows = table.find_all('tr')[1:]  # Omitir la primera fila que es el encabezado
-
+            rows = table.find_all('tr')[1:]  # Omitir el encabezado
             if not rows:
-                logging.error(f"No se encontraron filas en la tabla para el DUA {dua_number}.")
-                self.log_failed_dua(dua_number)
-                raise NoRowsException(f"No se encontraron filas en la tabla para el DUA {dua_number}")
+                logging.warning(f"No se encontraron filas en la tabla para el DUA {dua_number}.")
+                raise NoRowsException(f"No se extrajo ningún dato del DUA {dua_number}")
 
             extracted_data = []
-
             for row in rows:
                 if self.stop_event.is_set():
                     return None
@@ -362,30 +380,32 @@ class DUAProcessor:
                     'Tributo': columns[3].text.strip(),
                     'Descripcion_tributo': columns[4].text.strip(),
                     'Valor_MN': columns[5].text.strip(),
-                    'numero_del_dua': dua_number
+                    'numero_del_dua': numero_del_dua  # Asignar el valor extraído desde la página
                 }
                 extracted_data.append(data)
 
             if not extracted_data:
                 logging.warning(f"No se extrajo ningún dato del DUA {dua_number}.")
-                self.log_failed_dua(dua_number)
+                self.log_dua_no_rows(dua_number)
                 raise NoRowsException(f"No se extrajo ningún dato del DUA {dua_number}")
 
-            # Crear un DataFrame de los datos extraídos
             df = pd.DataFrame(extracted_data)
 
-            # Guardar los datos en el archivo CSV
+            # Guardar los datos en el CSV usando la codificación utf-8-sig
             output_csv_path = self.config['output_csv']
-            if not os.path.exists(output_csv_path):
-                df.to_csv(output_csv_path, mode='w', header=True, index=False)
-            else:
-                df.to_csv(output_csv_path, mode='a', header=False, index=False)
+            with self.lock:
+                if not os.path.exists(output_csv_path):
+                    df.to_csv(output_csv_path, mode='w', header=True, index=False, encoding='utf-8-sig')
+                else:
+                    # Leer el CSV existente con la codificación correcta y combinar
+                    existing_df = pd.read_csv(output_csv_path, encoding='utf-8-sig')
+                    combined_df = pd.concat([existing_df, df], ignore_index=True)
+                    combined_df.to_csv(output_csv_path, mode='w', header=True, index=False, encoding='utf-8-sig')
 
             logging.info(f"Datos del DUA {dua_number} guardados exitosamente")
             return df
 
         except NoRowsException:
-            # Re-lanzar la excepción para manejarla en niveles superiores
             raise
         except Exception as e:
             logging.exception(f"Error al procesar la página del DUA {dua_number}: {e}")
@@ -393,14 +413,15 @@ class DUAProcessor:
             return None
 
     def log_failed_dua(self, dua_number):
+        """Registrar los DUAs fallidos (errores generales) en el archivo correspondiente."""
         failed_duas_path = self.config['failed_duas']
-        with open(failed_duas_path, 'a') as f:
+        with open(failed_duas_path, 'a', encoding='utf-8-sig') as f:
             f.write(f"{dua_number}\n")
 
     def log_dua_no_rows(self, dua_number):
-        # Obtener la ruta desde la configuración o usar una por defecto
-        no_rows_duas_path = self.config.get('no_rows_duas', 'data/output/DUAs_sin_filas_agosto24.txt')
-        with open(no_rows_duas_path, 'a') as f:
+        """Registrar los DUAs sin filas (tabla vacía) en el archivo correspondiente."""
+        no_rows_duas_path = self.config.get('no_rows_duas', 'data/output/DUAs_sin_filas_enero25.txt')
+        with open(no_rows_duas_path, 'a', encoding='utf-8-sig') as f:
             f.write(f"{dua_number}\n")
 
     def close(self):

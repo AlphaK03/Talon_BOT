@@ -58,7 +58,7 @@ def main():
 
     # Crear la aplicación Tkinter
     root = tk.Tk()
-    root.title("CHC CONSULTORES BOT")
+    root.title("CHC CONSULTORES BOT - Talon")
 
     # Crear variables de Tkinter asociadas a 'root'
     progress_var = tk.DoubleVar(master=root)
