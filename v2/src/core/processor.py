@@ -26,6 +26,7 @@ from selenium.common.exceptions import (
     WebDriverException, NoSuchElementException,
     TimeoutException, StaleElementReferenceException,
 )
+from urllib3.exceptions import MaxRetryError, NewConnectionError as Urllib3NewConnectionError
 
 from core.browser import create_edge_driver
 from flows.base_flow import BaseFlow
@@ -162,8 +163,18 @@ class DUAProcessor:
 
                                 dua_number, attempt, max_retries)
 
+            except (MaxRetryError, Urllib3NewConnectionError) as e:
+                # El proceso del browser se cayó — la sesión WebDriver ya no existe.
+                # Reiniciar inmediatamente para que los siguientes intentos tengan browser vivo.
+                _last_no_rows = False
+                logging.warning(
+                    "[%s] Sesión WebDriver perdida (intento %d/%d). Reiniciando navegador...",
+                    dua_number, attempt, max_retries,
+                )
+                self._restart_browser()
+
             except (StaleElementReferenceException, NoSuchElementException,
-                    TimeoutException, WebDriverException) as e:
+                    TimeoutException, WebDriverException, ValueError) as e:
                 _last_no_rows = False
                 logging.warning("[%s] Intento %d/%d: %s: %s",
                                 dua_number, attempt, max_retries, type(e).__name__, e)
