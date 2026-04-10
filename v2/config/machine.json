@@ -1,0 +1,11 @@
+{
+    "base_path": "C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA",
+    "output_base_path": "C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Talon_BOT",
+    "names_file_path": "C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Informativos/Names_TicaPortal.xlsx",
+    "edge_driver_path": "C:/WebDriver/msedgedriver.exe",
+    "max_retries": 1,
+    "timeout": 10,
+    "cant_hilos": 2,
+    "screenshot_path": "screenshots",
+    "headless": true
+}

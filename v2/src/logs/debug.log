@@ -1,0 +1,931 @@
+2026-03-28 22:31:46,905 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 22:33:01,758 - ERROR - No se pudo cargar DUAs previos: No columns to parse from file
+2026-03-28 22:33:01,758 - INFO - ─── INICIO DE PROCESAMIENTO ───────────────────────────
+2026-03-28 22:33:01,758 - INFO - Hoja seleccionada : 'febrero26'  →  clave: 'febrero26'
+2026-03-28 22:33:01,758 - INFO - Progreso guardado : {}
+2026-03-28 22:33:01,758 - INFO - Indice de inicio  : -1  (reanudando desde fila 1 / 57283)
+2026-03-28 22:33:01,758 - INFO - DUAs pendientes   : 57283
+2026-03-28 22:33:01,758 - INFO - ───────────────────────────────────────────────────────
+2026-03-28 22:33:16,818 - WARNING - [001-2026-007989] Intento 1/3: TimeoutException: Message: 
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff62ff01285+da15]
+	msedgedriver!GetHandleVerifier [0x7ff62ff012e4+da74]
+	msedgedriver!GetHandleVerifier [0x7ff63026f8dc+37c06c]
+	msedgedriver!(No symbol) [0x7ff62fc74d26]
+	msedgedriver!(No symbol) [0x7ff62fc74fc5]
+	msedgedriver!(No symbol) [0x7ff62fcb2a87]
+	msedgedriver!(No symbol) [0x7ff62fc6b9b7]
+	msedgedriver!(No symbol) [0x7ff62fcb07e2]
+	msedgedriver!(No symbol) [0x7ff62fc6b1fc]
+	msedgedriver!(No symbol) [0x7ff62fc6a456]
+	msedgedriver!(No symbol) [0x7ff62fc6b023]
+	msedgedriver!(No symbol) [0x7ff62fd38b69]
+	msedgedriver!(No symbol) [0x7ff62fd35103]
+	msedgedriver!(No symbol) [0x7ff62fd44d14]
+	msedgedriver!GetHandleVerifier [0x7ff62ff1c108+28898]
+	msedgedriver!GetHandleVerifier [0x7ff62ff248c6+31056]
+	msedgedriver!GetHandleVerifier [0x7ff62ff089c4+15154]
+	msedgedriver!GetHandleVerifier [0x7ff62ff08b09+15299]
+	msedgedriver!GetHandleVerifier [0x7ff62fef5d02+2492]
+	KERNEL32!BaseThreadInitThunk [0x7ffe61d0e8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffe62d2c48c+2c]
+
+2026-03-28 22:33:19,996 - INFO - DUA 001-2026-007989 guardado.
+2026-03-28 22:33:21,087 - INFO - DUA 001-2026-007990 guardado.
+2026-03-28 22:33:22,275 - ERROR - [003-2026-009125] Error inesperado intento 1/3: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+2026-03-28 22:33:25,355 - ERROR - [003-2026-009125] Error inesperado intento 2/3: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+2026-03-28 22:33:28,449 - ERROR - [003-2026-009125] Error inesperado intento 3/3: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+2026-03-28 22:33:30,451 - ERROR - [003-2026-009125] Reintentos agotados. Reiniciando navegador.
+2026-03-28 22:33:39,697 - ERROR - [003-2026-009126] Error inesperado intento 1/3: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+2026-03-28 22:33:42,764 - ERROR - [003-2026-009126] Error inesperado intento 2/3: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+2026-03-28 22:33:45,850 - ERROR - [003-2026-009126] Error inesperado intento 3/3: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+2026-03-28 22:33:47,852 - ERROR - [003-2026-009126] Reintentos agotados. Reiniciando navegador.
+2026-03-28 22:33:56,954 - ERROR - [003-2026-009127] Error inesperado intento 1/3: DUA 003-2026-009127: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009127: la tabla de movimientos no tiene filas.
+2026-03-28 22:34:00,126 - ERROR - [003-2026-009127] Error inesperado intento 2/3: DUA 003-2026-009127: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009127: la tabla de movimientos no tiene filas.
+2026-03-28 22:34:03,313 - ERROR - [003-2026-009127] Error inesperado intento 3/3: DUA 003-2026-009127: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009127: la tabla de movimientos no tiene filas.
+2026-03-28 22:34:05,315 - ERROR - [003-2026-009127] Reintentos agotados. Reiniciando navegador.
+2026-03-28 22:34:13,071 - WARNING - Error DNS. Esperando disponibilidad del portal...
+2026-03-28 22:34:13,111 - WARNING - Portal no disponible, reintentando en 10s...
+2026-03-28 22:34:23,120 - WARNING - Portal no disponible, reintentando en 10s...
+2026-03-28 22:34:33,244 - INFO - Portal disponible nuevamente.
+2026-03-28 22:34:34,838 - ERROR - [003-2026-009128] Error inesperado intento 1/3: DUA 003-2026-009128: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009128: la tabla de movimientos no tiene filas.
+2026-03-28 22:34:37,905 - ERROR - [003-2026-009128] Error inesperado intento 2/3: DUA 003-2026-009128: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009128: la tabla de movimientos no tiene filas.
+2026-03-28 22:34:41,014 - ERROR - [003-2026-009128] Error inesperado intento 3/3: DUA 003-2026-009128: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009128: la tabla de movimientos no tiene filas.
+2026-03-28 22:34:43,016 - ERROR - [003-2026-009128] Reintentos agotados. Reiniciando navegador.
+2026-03-28 22:34:52,241 - ERROR - [003-2026-009129] Error inesperado intento 1/3: DUA 003-2026-009129: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009129: la tabla de movimientos no tiene filas.
+2026-03-28 22:34:55,345 - ERROR - [003-2026-009129] Error inesperado intento 2/3: DUA 003-2026-009129: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009129: la tabla de movimientos no tiene filas.
+2026-03-28 22:34:58,457 - ERROR - [003-2026-009129] Error inesperado intento 3/3: DUA 003-2026-009129: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009129: la tabla de movimientos no tiene filas.
+2026-03-28 22:35:00,458 - ERROR - [003-2026-009129] Reintentos agotados. Reiniciando navegador.
+2026-03-28 22:35:09,775 - ERROR - [003-2026-009131] Error inesperado intento 1/3: DUA 003-2026-009131: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 130, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009131: la tabla de movimientos no tiene filas.
+2026-03-28 22:35:14,551 - INFO - ─── DETENIDO ─── OK:2  Error:5  Omitidos:0
+2026-03-28 22:40:42,468 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 22:57:15,935 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 22:58:24,242 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 22:58:35,905 - INFO - ─── INICIO DE PROCESAMIENTO ───────────────────────────
+2026-03-28 22:58:35,905 - INFO - Hoja seleccionada : 'febrero26'  →  clave: 'febrero26'
+2026-03-28 22:58:35,905 - INFO - Progreso guardado : {'febrero26': -1}
+2026-03-28 22:58:35,905 - INFO - Indice de inicio  : -1  (reanudando desde fila 1 / 57283)
+2026-03-28 22:58:35,905 - INFO - DUAs pendientes   : 57283
+2026-03-28 22:58:35,905 - INFO - ───────────────────────────────────────────────────────
+2026-03-28 22:58:41,124 - INFO - DUA 001-2026-007989 guardado.
+2026-03-28 22:58:42,247 - INFO - DUA 001-2026-007990 guardado.
+2026-03-28 22:58:43,378 - ERROR - [003-2026-009125] Error inesperado intento 1/3: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 132, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+2026-03-28 22:58:46,501 - ERROR - [003-2026-009125] Error inesperado intento 2/3: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 132, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+2026-03-28 22:58:49,647 - ERROR - [003-2026-009125] Error inesperado intento 3/3: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 132, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009125: la tabla de movimientos no tiene filas.
+2026-03-28 22:58:51,649 - ERROR - [003-2026-009125] Reintentos agotados. Reiniciando navegador.
+2026-03-28 22:59:00,923 - ERROR - [003-2026-009126] Error inesperado intento 1/3: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 132, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+2026-03-28 22:59:04,016 - ERROR - [003-2026-009126] Error inesperado intento 2/3: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 132, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+2026-03-28 22:59:08,488 - INFO - ─── DETENIDO ─── OK:2  Error:1  Omitidos:0
+2026-03-28 22:59:22,868 - INFO - Cargados 2 DUAs previos desde C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Movimientos_BOT\febrero26\DUAs_procesados_log_febrero26.txt.
+2026-03-28 22:59:22,868 - INFO - ─── INICIO DE PROCESAMIENTO ───────────────────────────
+2026-03-28 22:59:22,869 - INFO - Hoja seleccionada : 'febrero26'  →  clave: 'febrero26'
+2026-03-28 22:59:22,869 - INFO - Progreso guardado : {'febrero26': 2}
+2026-03-28 22:59:22,869 - INFO - Indice de inicio  : 2  (reanudando desde fila 4 / 57283)
+2026-03-28 22:59:22,869 - INFO - DUAs pendientes   : 57280
+2026-03-28 22:59:22,869 - INFO - ───────────────────────────────────────────────────────
+2026-03-28 22:59:24,115 - INFO - Saltadas 3 filas ya procesadas (indices 0-2).
+2026-03-28 22:59:24,373 - WARNING - Error DNS. Esperando disponibilidad del portal...
+2026-03-28 22:59:25,257 - WARNING - Portal no disponible, reintentando en 10s...
+2026-03-28 22:59:35,361 - WARNING - Portal no disponible, reintentando en 10s...
+2026-03-28 22:59:44,565 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 22:59:44,565 - INFO - Configuracion guardada.
+2026-03-28 22:59:45,372 - WARNING - Portal no disponible, reintentando en 10s...
+2026-03-28 22:59:55,492 - INFO - Portal disponible nuevamente.
+2026-03-28 22:59:57,311 - ERROR - [003-2026-009126] Error inesperado intento 1/3: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 132, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+2026-03-28 23:00:01,899 - INFO - ─── DETENIDO ─── OK:0  Error:0  Omitidos:0
+2026-03-28 23:00:11,536 - INFO - Cargados 2 DUAs previos desde C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Movimientos_BOT\febrero26\DUAs_procesados_log_febrero26.txt.
+2026-03-28 23:00:11,537 - INFO - ─── INICIO DE PROCESAMIENTO ───────────────────────────
+2026-03-28 23:00:11,537 - INFO - Hoja seleccionada : 'febrero26'  →  clave: 'febrero26'
+2026-03-28 23:00:11,537 - INFO - Progreso guardado : {'febrero26': 2}
+2026-03-28 23:00:11,537 - INFO - Indice de inicio  : 2  (reanudando desde fila 4 / 57283)
+2026-03-28 23:00:11,537 - INFO - DUAs pendientes   : 57280
+2026-03-28 23:00:11,537 - INFO - ───────────────────────────────────────────────────────
+2026-03-28 23:00:14,030 - INFO - Saltadas 3 filas ya procesadas (indices 0-2).
+2026-03-28 23:00:14,347 - WARNING - Error DNS. Esperando disponibilidad del portal...
+2026-03-28 23:00:14,419 - WARNING - Portal no disponible, reintentando en 10s...
+2026-03-28 23:00:24,520 - WARNING - Portal no disponible, reintentando en 10s...
+2026-03-28 23:00:34,643 - INFO - Portal disponible nuevamente.
+2026-03-28 23:00:36,357 - ERROR - [003-2026-009126] Error inesperado intento 1/3: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 132, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+2026-03-28 23:00:39,588 - ERROR - [003-2026-009126] Error inesperado intento 2/3: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\core\processor.py", line 132, in process_dua
+    data = self.flow.extract_data(self.driver.page_source)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\Repositorios\XMovimientos_BOT\v2\src\flows\xmovimientos_flow.py", line 99, in extract_data
+    raise ValueError(
+ValueError: DUA 003-2026-009126: la tabla de movimientos no tiene filas.
+2026-03-28 23:00:52,444 - WARNING - [003-2026-009126] Intento 3/3: TimeoutException: Message: 
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff62ff01285+da15]
+	msedgedriver!GetHandleVerifier [0x7ff62ff012e4+da74]
+	msedgedriver!GetHandleVerifier [0x7ff63026f8dc+37c06c]
+	msedgedriver!(No symbol) [0x7ff62fc74d26]
+	msedgedriver!(No symbol) [0x7ff62fc74fc5]
+	msedgedriver!(No symbol) [0x7ff62fcb2a87]
+	msedgedriver!(No symbol) [0x7ff62fc6b9b7]
+	msedgedriver!(No symbol) [0x7ff62fcb07e2]
+	msedgedriver!(No symbol) [0x7ff62fc6b1fc]
+	msedgedriver!(No symbol) [0x7ff62fc6a456]
+	msedgedriver!(No symbol) [0x7ff62fc6b023]
+	msedgedriver!(No symbol) [0x7ff62fd38b69]
+	msedgedriver!(No symbol) [0x7ff62fd35103]
+	msedgedriver!(No symbol) [0x7ff62fd44d14]
+	msedgedriver!GetHandleVerifier [0x7ff62ff1c108+28898]
+	msedgedriver!GetHandleVerifier [0x7ff62ff248c6+31056]
+	msedgedriver!GetHandleVerifier [0x7ff62ff089c4+15154]
+	msedgedriver!GetHandleVerifier [0x7ff62ff08b09+15299]
+	msedgedriver!GetHandleVerifier [0x7ff62fef5d02+2492]
+	KERNEL32!BaseThreadInitThunk [0x7ffe61d0e8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffe62d2c48c+2c]
+
+2026-03-28 23:00:54,445 - ERROR - [003-2026-009126] Reintentos agotados. Reiniciando navegador.
+2026-03-28 23:01:04,717 - INFO - ─── DETENIDO ─── OK:0  Error:1  Omitidos:0
+2026-03-28 23:08:20,429 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:08:27,742 - INFO - Cargados 2 DUAs previos desde C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Movimientos_BOT\febrero26\DUAs_procesados_log_febrero26.txt.
+2026-03-28 23:08:27,742 - INFO - ─── INICIO DE PROCESAMIENTO ───────────────────────────
+2026-03-28 23:08:27,742 - INFO - Hoja seleccionada : 'febrero26'  →  clave: 'febrero26'
+2026-03-28 23:08:27,742 - INFO - Progreso guardado : {'febrero26': 3}
+2026-03-28 23:08:27,742 - INFO - Indice de inicio  : 3  (reanudando desde fila 5 / 57283)
+2026-03-28 23:08:27,742 - INFO - DUAs pendientes   : 57279
+2026-03-28 23:08:27,743 - INFO - ───────────────────────────────────────────────────────
+2026-03-28 23:08:29,271 - INFO - Saltadas 4 filas ya procesadas (indices 0-3).
+2026-03-28 23:08:33,155 - WARNING - [003-2026-009127] Sin movimientos (intento 1/3).
+2026-03-28 23:08:36,735 - WARNING - [003-2026-009127] Sin movimientos (intento 2/3).
+2026-03-28 23:08:39,945 - WARNING - [003-2026-009127] Sin movimientos (intento 3/3).
+2026-03-28 23:08:41,947 - WARNING - [003-2026-009127] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:08:43,104 - WARNING - [003-2026-009128] Sin movimientos (intento 1/3).
+2026-03-28 23:08:46,252 - WARNING - [003-2026-009128] Sin movimientos (intento 2/3).
+2026-03-28 23:08:49,415 - WARNING - [003-2026-009128] Sin movimientos (intento 3/3).
+2026-03-28 23:08:51,417 - WARNING - [003-2026-009128] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:08:52,596 - WARNING - [003-2026-009129] Sin movimientos (intento 1/3).
+2026-03-28 23:08:55,756 - WARNING - [003-2026-009129] Sin movimientos (intento 2/3).
+2026-03-28 23:08:58,894 - WARNING - [003-2026-009129] Sin movimientos (intento 3/3).
+2026-03-28 23:09:00,895 - WARNING - [003-2026-009129] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:09:02,040 - WARNING - [003-2026-009131] Sin movimientos (intento 1/3).
+2026-03-28 23:09:05,188 - WARNING - [003-2026-009131] Sin movimientos (intento 2/3).
+2026-03-28 23:09:08,331 - WARNING - [003-2026-009131] Sin movimientos (intento 3/3).
+2026-03-28 23:09:10,333 - WARNING - [003-2026-009131] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:09:11,489 - WARNING - [003-2026-009132] Sin movimientos (intento 1/3).
+2026-03-28 23:09:14,673 - WARNING - [003-2026-009132] Sin movimientos (intento 2/3).
+2026-03-28 23:09:17,816 - WARNING - [003-2026-009132] Sin movimientos (intento 3/3).
+2026-03-28 23:09:19,817 - WARNING - [003-2026-009132] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:09:20,972 - WARNING - [003-2026-009133] Sin movimientos (intento 1/3).
+2026-03-28 23:09:24,107 - WARNING - [003-2026-009133] Sin movimientos (intento 2/3).
+2026-03-28 23:09:27,238 - WARNING - [003-2026-009133] Sin movimientos (intento 3/3).
+2026-03-28 23:09:29,240 - WARNING - [003-2026-009133] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:09:30,468 - WARNING - [003-2026-009134] Sin movimientos (intento 1/3).
+2026-03-28 23:09:33,676 - WARNING - [003-2026-009134] Sin movimientos (intento 2/3).
+2026-03-28 23:09:46,683 - WARNING - [003-2026-009134] Intento 3/3: TimeoutException: Message: 
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff62ff01285+da15]
+	msedgedriver!GetHandleVerifier [0x7ff62ff012e4+da74]
+	msedgedriver!GetHandleVerifier [0x7ff63026f8dc+37c06c]
+	msedgedriver!(No symbol) [0x7ff62fc74d26]
+	msedgedriver!(No symbol) [0x7ff62fc74fc5]
+	msedgedriver!(No symbol) [0x7ff62fcb2a87]
+	msedgedriver!(No symbol) [0x7ff62fc6b9b7]
+	msedgedriver!(No symbol) [0x7ff62fcb07e2]
+	msedgedriver!(No symbol) [0x7ff62fc6b1fc]
+	msedgedriver!(No symbol) [0x7ff62fc6a456]
+	msedgedriver!(No symbol) [0x7ff62fc6b023]
+	msedgedriver!(No symbol) [0x7ff62fd38b69]
+	msedgedriver!(No symbol) [0x7ff62fd35103]
+	msedgedriver!(No symbol) [0x7ff62fd44d14]
+	msedgedriver!GetHandleVerifier [0x7ff62ff1c108+28898]
+	msedgedriver!GetHandleVerifier [0x7ff62ff248c6+31056]
+	msedgedriver!GetHandleVerifier [0x7ff62ff089c4+15154]
+	msedgedriver!GetHandleVerifier [0x7ff62ff08b09+15299]
+	msedgedriver!GetHandleVerifier [0x7ff62fef5d02+2492]
+	KERNEL32!BaseThreadInitThunk [0x7ffe61d0e8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffe62d2c48c+2c]
+
+2026-03-28 23:09:48,684 - ERROR - [003-2026-009134] Reintentos agotados. Reiniciando navegador.
+2026-03-28 23:09:56,730 - WARNING - Error DNS. Esperando disponibilidad del portal...
+2026-03-28 23:09:56,744 - WARNING - Portal no disponible, reintentando en 10s...
+2026-03-28 23:10:06,852 - INFO - Portal disponible nuevamente.
+2026-03-28 23:10:08,535 - WARNING - [003-2026-009135] Sin movimientos (intento 1/3).
+2026-03-28 23:10:11,747 - WARNING - [003-2026-009135] Sin movimientos (intento 2/3).
+2026-03-28 23:10:14,920 - WARNING - [003-2026-009135] Sin movimientos (intento 3/3).
+2026-03-28 23:10:16,921 - WARNING - [003-2026-009135] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:10:18,124 - WARNING - [003-2026-009136] Sin movimientos (intento 1/3).
+2026-03-28 23:10:21,285 - WARNING - [003-2026-009136] Sin movimientos (intento 2/3).
+2026-03-28 23:10:24,462 - WARNING - [003-2026-009136] Sin movimientos (intento 3/3).
+2026-03-28 23:10:26,463 - WARNING - [003-2026-009136] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:10:27,684 - WARNING - [003-2026-009137] Sin movimientos (intento 1/3).
+2026-03-28 23:10:30,880 - WARNING - [003-2026-009137] Sin movimientos (intento 2/3).
+2026-03-28 23:10:34,048 - WARNING - [003-2026-009137] Sin movimientos (intento 3/3).
+2026-03-28 23:10:36,049 - WARNING - [003-2026-009137] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:10:37,247 - WARNING - [003-2026-009138] Sin movimientos (intento 1/3).
+2026-03-28 23:10:40,398 - WARNING - [003-2026-009138] Sin movimientos (intento 2/3).
+2026-03-28 23:10:43,556 - WARNING - [003-2026-009138] Sin movimientos (intento 3/3).
+2026-03-28 23:10:45,558 - WARNING - [003-2026-009138] Sin movimientos tras 3 intentos. Registrado.
+2026-03-28 23:10:46,731 - WARNING - [003-2026-009139] Sin movimientos (intento 1/3).
+2026-03-28 23:10:49,928 - WARNING - [003-2026-009139] Sin movimientos (intento 2/3).
+2026-03-28 23:10:54,495 - INFO - ─── DETENIDO ─── OK:0  Error:11  Omitidos:0
+2026-03-28 23:11:01,295 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:11:01,298 - INFO - Configuracion guardada.
+2026-03-28 23:11:07,597 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:11:07,597 - INFO - Configuracion guardada.
+2026-03-28 23:11:14,163 - INFO - Cargados 2 DUAs previos desde C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Movimientos_BOT\febrero26\DUAs_procesados_log_febrero26.txt.
+2026-03-28 23:11:14,163 - INFO - ─── INICIO DE PROCESAMIENTO ───────────────────────────
+2026-03-28 23:11:14,163 - INFO - Hoja seleccionada : 'febrero26'  →  clave: 'febrero26'
+2026-03-28 23:11:14,164 - INFO - Progreso guardado : {'febrero26': 14}
+2026-03-28 23:11:14,165 - INFO - Indice de inicio  : 14  (reanudando desde fila 16 / 57283)
+2026-03-28 23:11:14,165 - INFO - DUAs pendientes   : 57268
+2026-03-28 23:11:14,165 - INFO - ───────────────────────────────────────────────────────
+2026-03-28 23:11:17,108 - INFO - Saltadas 15 filas ya procesadas (indices 0-14).
+2026-03-28 23:11:20,130 - WARNING - [003-2026-009139] Sin movimientos (intento 1/1).
+2026-03-28 23:11:20,870 - WARNING - [003-2026-009140] Sin movimientos (intento 1/1).
+2026-03-28 23:11:22,671 - WARNING - [003-2026-009139] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:22,936 - WARNING - [003-2026-009140] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:24,046 - WARNING - [003-2026-009141] Sin movimientos (intento 1/1).
+2026-03-28 23:11:24,531 - WARNING - [003-2026-009142] Sin movimientos (intento 1/1).
+2026-03-28 23:11:26,047 - WARNING - [003-2026-009141] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:26,532 - WARNING - [003-2026-009142] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:28,465 - WARNING - [003-2026-009144] Sin movimientos (intento 1/1).
+2026-03-28 23:11:28,536 - WARNING - [003-2026-009143] Sin movimientos (intento 1/1).
+2026-03-28 23:11:30,466 - WARNING - [003-2026-009144] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:30,537 - WARNING - [003-2026-009143] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:31,941 - WARNING - [003-2026-009148] Sin movimientos (intento 1/1).
+2026-03-28 23:11:31,978 - WARNING - [003-2026-009145] Sin movimientos (intento 1/1).
+2026-03-28 23:11:33,943 - WARNING - [003-2026-009148] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:33,985 - WARNING - [003-2026-009145] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:35,397 - WARNING - [005-2026-072259] Sin movimientos (intento 1/1).
+2026-03-28 23:11:35,411 - WARNING - [003-2026-009151] Sin movimientos (intento 1/1).
+2026-03-28 23:11:37,412 - WARNING - [005-2026-072259] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:37,414 - WARNING - [003-2026-009151] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:38,779 - WARNING - [005-2026-072260] Sin movimientos (intento 1/1).
+2026-03-28 23:11:40,356 - WARNING - [005-2026-072261] Sin movimientos (intento 1/1).
+2026-03-28 23:11:40,781 - WARNING - [005-2026-072260] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:42,358 - WARNING - [005-2026-072261] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:44,245 - WARNING - [005-2026-072262] Sin movimientos (intento 1/1).
+2026-03-28 23:11:46,246 - WARNING - [005-2026-072262] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:47,861 - WARNING - [005-2026-072263] Sin movimientos (intento 1/1).
+2026-03-28 23:11:48,399 - WARNING - [005-2026-072264] Sin movimientos (intento 1/1).
+2026-03-28 23:11:49,862 - WARNING - [005-2026-072263] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:50,400 - WARNING - [005-2026-072264] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:11:51,294 - INFO - DUA 005-2026-072265 guardado.
+2026-03-28 23:11:51,809 - INFO - DUA 005-2026-072266 guardado.
+2026-03-28 23:11:52,783 - INFO - DUA 005-2026-072267 guardado.
+2026-03-28 23:11:53,242 - INFO - DUA 005-2026-072268 guardado.
+2026-03-28 23:11:54,273 - INFO - DUA 005-2026-072269 guardado.
+2026-03-28 23:11:54,632 - INFO - DUA 005-2026-072270 guardado.
+2026-03-28 23:11:55,831 - INFO - DUA 005-2026-072272 guardado.
+2026-03-28 23:11:55,941 - INFO - DUA 005-2026-072274 guardado.
+2026-03-28 23:11:57,200 - INFO - DUA 005-2026-072275 guardado.
+2026-03-28 23:11:57,258 - INFO - DUA 005-2026-072277 guardado.
+2026-03-28 23:11:58,671 - WARNING - [005-2026-072278] Sin movimientos (intento 1/1).
+2026-03-28 23:11:58,821 - WARNING - [005-2026-072279] Sin movimientos (intento 1/1).
+2026-03-28 23:12:00,673 - WARNING - [005-2026-072278] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:00,822 - WARNING - [005-2026-072279] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:02,352 - WARNING - [005-2026-072281] Sin movimientos (intento 1/1).
+2026-03-28 23:12:04,133 - WARNING - [005-2026-072280] Sin movimientos (intento 1/1).
+2026-03-28 23:12:04,354 - WARNING - [005-2026-072281] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:05,656 - WARNING - [005-2026-072282] Sin movimientos (intento 1/1).
+2026-03-28 23:12:06,134 - WARNING - [005-2026-072280] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:07,656 - WARNING - [005-2026-072282] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:09,114 - WARNING - [005-2026-072284] Sin movimientos (intento 1/1).
+2026-03-28 23:12:10,110 - WARNING - [005-2026-072283] Sin movimientos (intento 1/1).
+2026-03-28 23:12:11,114 - WARNING - [005-2026-072284] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:12,111 - WARNING - [005-2026-072283] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:12,664 - WARNING - [005-2026-072285] Sin movimientos (intento 1/1).
+2026-03-28 23:12:13,838 - WARNING - [005-2026-072286] Sin movimientos (intento 1/1).
+2026-03-28 23:12:14,666 - WARNING - [005-2026-072285] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:15,841 - WARNING - [005-2026-072286] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:16,132 - WARNING - [005-2026-072287] Sin movimientos (intento 1/1).
+2026-03-28 23:12:18,135 - WARNING - [005-2026-072287] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:19,281 - WARNING - [005-2026-072288] Sin movimientos (intento 1/1).
+2026-03-28 23:12:19,763 - WARNING - [005-2026-072289] Sin movimientos (intento 1/1).
+2026-03-28 23:12:21,282 - WARNING - [005-2026-072288] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:21,764 - WARNING - [005-2026-072289] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:22,671 - WARNING - [005-2026-072290] Sin movimientos (intento 1/1).
+2026-03-28 23:12:23,160 - WARNING - [005-2026-072291] Sin movimientos (intento 1/1).
+2026-03-28 23:12:24,675 - WARNING - [005-2026-072290] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:25,162 - WARNING - [005-2026-072291] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:26,257 - WARNING - [005-2026-072292] Sin movimientos (intento 1/1).
+2026-03-28 23:12:26,770 - WARNING - [005-2026-072293] Sin movimientos (intento 1/1).
+2026-03-28 23:12:28,259 - WARNING - [005-2026-072292] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:28,772 - WARNING - [005-2026-072293] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:30,435 - WARNING - [005-2026-072294] Sin movimientos (intento 1/1).
+2026-03-28 23:12:30,649 - WARNING - [005-2026-072295] Sin movimientos (intento 1/1).
+2026-03-28 23:12:32,438 - WARNING - [005-2026-072294] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:32,652 - WARNING - [005-2026-072295] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:34,177 - WARNING - [005-2026-072297] Sin movimientos (intento 1/1).
+2026-03-28 23:12:34,258 - WARNING - [005-2026-072296] Sin movimientos (intento 1/1).
+2026-03-28 23:12:36,219 - WARNING - [005-2026-072297] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:36,260 - WARNING - [005-2026-072296] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:37,684 - WARNING - [005-2026-072298] Sin movimientos (intento 1/1).
+2026-03-28 23:12:37,873 - WARNING - [005-2026-072299] Sin movimientos (intento 1/1).
+2026-03-28 23:12:39,686 - WARNING - [005-2026-072298] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:39,875 - WARNING - [005-2026-072299] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:41,087 - WARNING - [005-2026-072300] Sin movimientos (intento 1/1).
+2026-03-28 23:12:41,406 - WARNING - [005-2026-072301] Sin movimientos (intento 1/1).
+2026-03-28 23:12:43,089 - WARNING - [005-2026-072300] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:43,407 - WARNING - [005-2026-072301] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:44,651 - WARNING - [005-2026-072302] Sin movimientos (intento 1/1).
+2026-03-28 23:12:44,801 - WARNING - [005-2026-072303] Sin movimientos (intento 1/1).
+2026-03-28 23:12:46,651 - WARNING - [005-2026-072302] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:46,802 - WARNING - [005-2026-072303] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:48,197 - WARNING - [005-2026-072304] Sin movimientos (intento 1/1).
+2026-03-28 23:12:48,266 - INFO - DUA 005-2026-072305 guardado.
+2026-03-28 23:12:49,495 - WARNING - [006-2026-018292] Sin movimientos (intento 1/1).
+2026-03-28 23:12:50,199 - WARNING - [005-2026-072304] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:51,459 - WARNING - [006-2026-018297] Sin movimientos (intento 1/1).
+2026-03-28 23:12:51,497 - WARNING - [006-2026-018292] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:52,783 - WARNING - [006-2026-018302] Sin movimientos (intento 1/1).
+2026-03-28 23:12:53,460 - WARNING - [006-2026-018297] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:54,774 - INFO - DUA 001-2026-007993 guardado.
+2026-03-28 23:12:54,785 - WARNING - [006-2026-018302] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:12:56,116 - INFO - DUA 001-2026-007994 guardado.
+2026-03-28 23:12:56,219 - INFO - DUA 001-2026-007996 guardado.
+2026-03-28 23:12:57,501 - INFO - DUA 001-2026-007999 guardado.
+2026-03-28 23:12:57,663 - INFO - DUA 001-2026-008002 guardado.
+2026-03-28 23:12:59,423 - WARNING - [001-2026-008006] Sin movimientos (intento 1/1).
+2026-03-28 23:12:59,499 - INFO - DUA 001-2026-008008 guardado.
+2026-03-28 23:13:01,374 - INFO - DUA 001-2026-008010 guardado.
+2026-03-28 23:13:01,426 - WARNING - [001-2026-008006] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:02,953 - WARNING - [001-2026-008011] Sin movimientos (intento 1/1).
+2026-03-28 23:13:03,035 - WARNING - [001-2026-008012] Sin movimientos (intento 1/1).
+2026-03-28 23:13:04,955 - WARNING - [001-2026-008011] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:05,036 - WARNING - [001-2026-008012] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:06,241 - WARNING - [001-2026-008013] Sin movimientos (intento 1/1).
+2026-03-28 23:13:06,451 - WARNING - [001-2026-008014] Sin movimientos (intento 1/1).
+2026-03-28 23:13:08,242 - WARNING - [001-2026-008013] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:08,453 - WARNING - [001-2026-008014] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:09,570 - WARNING - [001-2026-008016] Sin movimientos (intento 1/1).
+2026-03-28 23:13:09,749 - WARNING - [001-2026-008020] Sin movimientos (intento 1/1).
+2026-03-28 23:13:11,572 - WARNING - [001-2026-008016] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:11,750 - WARNING - [001-2026-008020] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:13,074 - INFO - DUA 001-2026-008024 guardado.
+2026-03-28 23:13:14,402 - INFO - DUA 001-2026-008028 guardado.
+2026-03-28 23:13:14,758 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:13:15,435 - INFO - DUA 001-2026-008029 guardado.
+2026-03-28 23:13:15,663 - WARNING - DUA 001-2026-008029 ya procesado. Omitido.
+2026-03-28 23:13:17,036 - WARNING - [001-2026-008032] Sin movimientos (intento 1/1).
+2026-03-28 23:13:19,037 - WARNING - [001-2026-008032] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:19,449 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:13:20,004 - INFO - DUA 001-2026-008035 guardado.
+2026-03-28 23:13:20,247 - WARNING - DUA 001-2026-008035 ya procesado. Omitido.
+2026-03-28 23:13:21,300 - WARNING - [001-2026-008037] Sin movimientos (intento 1/1).
+2026-03-28 23:13:21,502 - WARNING - [001-2026-008039] Sin movimientos (intento 1/1).
+2026-03-28 23:13:23,301 - WARNING - [001-2026-008037] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:23,503 - WARNING - [001-2026-008039] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:24,741 - INFO - DUA 001-2026-008042 guardado.
+2026-03-28 23:13:25,055 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:13:25,722 - INFO - DUA 001-2026-008043 guardado.
+2026-03-28 23:13:25,938 - WARNING - DUA 001-2026-008043 ya procesado. Omitido.
+2026-03-28 23:13:27,159 - WARNING - [001-2026-008047] Sin movimientos (intento 1/1).
+2026-03-28 23:13:29,161 - WARNING - [001-2026-008047] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:29,573 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:13:30,121 - INFO - DUA 001-2026-008049 guardado.
+2026-03-28 23:13:30,366 - WARNING - DUA 001-2026-008049 ya procesado. Omitido.
+2026-03-28 23:13:31,440 - INFO - DUA 001-2026-008050 guardado.
+2026-03-28 23:13:31,617 - INFO - DUA 001-2026-008052 guardado.
+2026-03-28 23:13:32,837 - INFO - DUA 001-2026-008055 guardado.
+2026-03-28 23:13:33,242 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:13:33,784 - INFO - DUA 001-2026-008060 guardado.
+2026-03-28 23:13:34,033 - WARNING - DUA 001-2026-008060 ya procesado. Omitido.
+2026-03-28 23:13:35,060 - INFO - DUA 001-2026-008061 guardado.
+2026-03-28 23:13:35,314 - INFO - DUA 001-2026-008062 guardado.
+2026-03-28 23:13:36,416 - INFO - DUA 001-2026-008065 guardado.
+2026-03-28 23:13:36,590 - WARNING - [001-2026-008067] Sin movimientos (intento 1/1).
+2026-03-28 23:13:38,591 - WARNING - [001-2026-008067] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:39,814 - INFO - DUA 001-2026-008071 guardado.
+2026-03-28 23:13:40,255 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:13:40,813 - INFO - DUA 001-2026-008072 guardado.
+2026-03-28 23:13:41,052 - WARNING - DUA 001-2026-008072 ya procesado. Omitido.
+2026-03-28 23:13:42,168 - WARNING - [001-2026-008076] Sin movimientos (intento 1/1).
+2026-03-28 23:13:42,341 - INFO - DUA 001-2026-008077 guardado.
+2026-03-28 23:13:43,568 - INFO - DUA 001-2026-008080 guardado.
+2026-03-28 23:13:44,169 - WARNING - [001-2026-008076] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:44,794 - INFO - DUA 001-2026-008084 guardado.
+2026-03-28 23:13:45,448 - WARNING - [001-2026-008085] Sin movimientos (intento 1/1).
+2026-03-28 23:13:46,067 - INFO - DUA 001-2026-008087 guardado.
+2026-03-28 23:13:47,381 - INFO - DUA 001-2026-008088 guardado.
+2026-03-28 23:13:47,450 - WARNING - [001-2026-008085] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:48,708 - INFO - DUA 001-2026-008089 guardado.
+2026-03-28 23:13:49,953 - WARNING - [001-2026-008094] Sin movimientos (intento 1/1).
+2026-03-28 23:13:51,955 - WARNING - [001-2026-008094] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:52,302 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:13:52,937 - WARNING - [001-2026-008092] Sin movimientos (intento 1/1).
+2026-03-28 23:13:53,182 - WARNING - [001-2026-008095] Sin movimientos (intento 1/1).
+2026-03-28 23:13:54,938 - WARNING - [001-2026-008092] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:55,184 - WARNING - [001-2026-008095] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:13:56,401 - INFO - DUA 001-2026-008100 guardado.
+2026-03-28 23:13:56,718 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:13:57,472 - INFO - DUA 001-2026-008102 guardado.
+2026-03-28 23:13:57,699 - WARNING - DUA 001-2026-008102 ya procesado. Omitido.
+2026-03-28 23:13:58,932 - INFO - DUA 001-2026-008105 guardado.
+2026-03-28 23:13:59,257 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:13:59,901 - WARNING - [001-2026-008103] Sin movimientos (intento 1/1).
+2026-03-28 23:14:00,137 - WARNING - [001-2026-008106] Sin movimientos (intento 1/1).
+2026-03-28 23:14:01,902 - WARNING - [001-2026-008103] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:02,138 - WARNING - [001-2026-008106] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:03,176 - INFO - DUA 001-2026-008107 guardado.
+2026-03-28 23:14:03,403 - INFO - DUA 001-2026-008109 guardado.
+2026-03-28 23:14:04,484 - INFO - DUA 001-2026-008111 guardado.
+2026-03-28 23:14:04,670 - INFO - DUA 001-2026-008112 guardado.
+2026-03-28 23:14:05,892 - INFO - DUA 001-2026-008114 guardado.
+2026-03-28 23:14:06,265 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:14:06,969 - INFO - DUA 001-2026-008115 guardado.
+2026-03-28 23:14:07,163 - WARNING - DUA 001-2026-008115 ya procesado. Omitido.
+2026-03-28 23:14:08,271 - INFO - DUA 001-2026-008116 guardado.
+2026-03-28 23:14:08,446 - INFO - DUA 001-2026-008117 guardado.
+2026-03-28 23:14:09,528 - INFO - DUA 001-2026-008118 guardado.
+2026-03-28 23:14:09,699 - INFO - DUA 001-2026-008121 guardado.
+2026-03-28 23:14:10,768 - INFO - DUA 001-2026-008124 guardado.
+2026-03-28 23:14:10,935 - INFO - DUA 001-2026-008126 guardado.
+2026-03-28 23:14:12,187 - INFO - DUA 001-2026-008131 guardado.
+2026-03-28 23:14:12,515 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:14:13,171 - INFO - DUA 001-2026-008134 guardado.
+2026-03-28 23:14:13,402 - WARNING - DUA 001-2026-008134 ya procesado. Omitido.
+2026-03-28 23:14:14,478 - INFO - DUA 001-2026-008135 guardado.
+2026-03-28 23:14:14,662 - INFO - DUA 001-2026-008136 guardado.
+2026-03-28 23:14:15,764 - WARNING - [001-2026-008137] Sin movimientos (intento 1/1).
+2026-03-28 23:14:15,974 - INFO - DUA 001-2026-008138 guardado.
+2026-03-28 23:14:17,207 - INFO - DUA 001-2026-008144 guardado.
+2026-03-28 23:14:17,765 - WARNING - [001-2026-008137] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:18,586 - WARNING - [001-2026-008148] Sin movimientos (intento 1/1).
+2026-03-28 23:14:19,225 - WARNING - [001-2026-008150] Sin movimientos (intento 1/1).
+2026-03-28 23:14:20,588 - WARNING - [001-2026-008148] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:21,226 - WARNING - [001-2026-008150] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:21,829 - INFO - DUA 001-2026-008153 guardado.
+2026-03-28 23:14:22,583 - WARNING - [001-2026-008155] Sin movimientos (intento 1/1).
+2026-03-28 23:14:23,104 - WARNING - [001-2026-008156] Sin movimientos (intento 1/1).
+2026-03-28 23:14:24,584 - WARNING - [001-2026-008155] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:25,104 - WARNING - [001-2026-008156] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:25,891 - INFO - DUA 001-2026-008162 guardado.
+2026-03-28 23:14:27,118 - INFO - DUA 001-2026-008165 guardado.
+2026-03-28 23:14:27,372 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:14:28,131 - WARNING - [001-2026-008164] Sin movimientos (intento 1/1).
+2026-03-28 23:14:28,352 - WARNING - [001-2026-008166] Sin movimientos (intento 1/1).
+2026-03-28 23:14:30,132 - WARNING - [001-2026-008164] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:30,354 - WARNING - [001-2026-008166] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:31,573 - WARNING - [001-2026-008172] Sin movimientos (intento 1/1).
+2026-03-28 23:14:33,574 - WARNING - [001-2026-008172] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:34,003 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:14:34,564 - WARNING - [001-2026-008171] Sin movimientos (intento 1/1).
+2026-03-28 23:14:34,802 - WARNING - [001-2026-008173] Sin movimientos (intento 1/1).
+2026-03-28 23:14:36,565 - WARNING - [001-2026-008171] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:36,803 - WARNING - [001-2026-008173] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:37,855 - WARNING - [001-2026-008174] Sin movimientos (intento 1/1).
+2026-03-28 23:14:38,081 - WARNING - [001-2026-008175] Sin movimientos (intento 1/1).
+2026-03-28 23:14:39,856 - WARNING - [001-2026-008174] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:40,082 - WARNING - [001-2026-008175] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:41,324 - INFO - DUA 001-2026-008179 guardado.
+2026-03-28 23:14:41,739 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:14:42,289 - WARNING - [001-2026-008177] Sin movimientos (intento 1/1).
+2026-03-28 23:14:42,513 - WARNING - [001-2026-008180] Sin movimientos (intento 1/1).
+2026-03-28 23:14:44,291 - WARNING - [001-2026-008177] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:44,515 - WARNING - [001-2026-008180] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:14:45,569 - INFO - DUA 001-2026-008183 guardado.
+2026-03-28 23:14:45,772 - INFO - DUA 001-2026-008186 guardado.
+2026-03-28 23:14:46,846 - INFO - DUA 001-2026-008188 guardado.
+2026-03-28 23:14:47,035 - INFO - DUA 001-2026-008189 guardado.
+2026-03-28 23:14:48,351 - INFO - DUA 001-2026-008192 guardado.
+2026-03-28 23:14:48,619 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:14:57,773 - WARNING - [001-2026-008190] Intento 1/1: TimeoutException: Message: 
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff62ff01285+da15]
+	msedgedriver!GetHandleVerifier [0x7ff62ff012e4+da74]
+	msedgedriver!GetHandleVerifier [0x7ff63026f8dc+37c06c]
+	msedgedriver!(No symbol) [0x7ff62fc74d26]
+	msedgedriver!(No symbol) [0x7ff62fc74fc5]
+	msedgedriver!(No symbol) [0x7ff62fcb2a87]
+	msedgedriver!(No symbol) [0x7ff62fc6b9b7]
+	msedgedriver!(No symbol) [0x7ff62fcb07e2]
+	msedgedriver!(No symbol) [0x7ff62fc6b1fc]
+	msedgedriver!(No symbol) [0x7ff62fc6a456]
+	msedgedriver!(No symbol) [0x7ff62fc6b023]
+	msedgedriver!(No symbol) [0x7ff62fd38b69]
+	msedgedriver!(No symbol) [0x7ff62fd35103]
+	msedgedriver!(No symbol) [0x7ff62fd44d14]
+	msedgedriver!GetHandleVerifier [0x7ff62ff1c108+28898]
+	msedgedriver!GetHandleVerifier [0x7ff62ff248c6+31056]
+	msedgedriver!GetHandleVerifier [0x7ff62ff089c4+15154]
+	msedgedriver!GetHandleVerifier [0x7ff62ff08b09+15299]
+	msedgedriver!GetHandleVerifier [0x7ff62fef5d02+2492]
+	KERNEL32!BaseThreadInitThunk [0x7ffe61d0e8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffe62d2c48c+2c]
+
+2026-03-28 23:14:59,252 - WARNING - [001-2026-008199] Intento 1/1: TimeoutException: Message: 
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff62ff01285+da15]
+	msedgedriver!GetHandleVerifier [0x7ff62ff012e4+da74]
+	msedgedriver!GetHandleVerifier [0x7ff63026f8dc+37c06c]
+	msedgedriver!(No symbol) [0x7ff62fc74d26]
+	msedgedriver!(No symbol) [0x7ff62fc74fc5]
+	msedgedriver!(No symbol) [0x7ff62fcb2a87]
+	msedgedriver!(No symbol) [0x7ff62fc6b9b7]
+	msedgedriver!(No symbol) [0x7ff62fcb07e2]
+	msedgedriver!(No symbol) [0x7ff62fc6b1fc]
+	msedgedriver!(No symbol) [0x7ff62fc6a456]
+	msedgedriver!(No symbol) [0x7ff62fc6b023]
+	msedgedriver!(No symbol) [0x7ff62fd38b69]
+	msedgedriver!(No symbol) [0x7ff62fd35103]
+	msedgedriver!(No symbol) [0x7ff62fd44d14]
+	msedgedriver!GetHandleVerifier [0x7ff62ff1c108+28898]
+	msedgedriver!GetHandleVerifier [0x7ff62ff248c6+31056]
+	msedgedriver!GetHandleVerifier [0x7ff62ff089c4+15154]
+	msedgedriver!GetHandleVerifier [0x7ff62ff08b09+15299]
+	msedgedriver!GetHandleVerifier [0x7ff62fef5d02+2492]
+	KERNEL32!BaseThreadInitThunk [0x7ffe61d0e8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffe62d2c48c+2c]
+
+2026-03-28 23:14:59,774 - ERROR - [001-2026-008190] Reintentos agotados. Reiniciando navegador.
+2026-03-28 23:15:01,253 - ERROR - [001-2026-008199] Reintentos agotados. Reiniciando navegador.
+2026-03-28 23:15:04,917 - INFO - DUA 001-2026-008200 guardado.
+2026-03-28 23:15:05,351 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D2AD0B7B90>: Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión')': /session/0d8186f4a79817bb064663d4641bbd1e
+2026-03-28 23:15:06,696 - WARNING - [001-2026-008205] Sin movimientos (intento 1/1).
+2026-03-28 23:15:08,698 - WARNING - [001-2026-008205] Sin movimientos tras 1 intentos. Registrado.
+2026-03-28 23:15:09,456 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D2AD5B6AE0>: Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión')': /session/0d8186f4a79817bb064663d4641bbd1e
+2026-03-28 23:15:09,945 - INFO - DUA 001-2026-008207 guardado.
+2026-03-28 23:15:11,211 - INFO - DUA 001-2026-008212 guardado.
+2026-03-28 23:15:12,957 - INFO - DUA 001-2026-008216 guardado.
+2026-03-28 23:15:13,547 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001D2AD075DC0>: Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión')': /session/0d8186f4a79817bb064663d4641bbd1e
+2026-03-28 23:15:14,224 - INFO - DUA 001-2026-008219 guardado.
+2026-03-28 23:15:25,208 - WARNING - [001-2026-008221] Intento 1/1: TimeoutException: Message: 
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff62ff01285+da15]
+	msedgedriver!GetHandleVerifier [0x7ff62ff012e4+da74]
+	msedgedriver!GetHandleVerifier [0x7ff63026f8dc+37c06c]
+	msedgedriver!(No symbol) [0x7ff62fc74d26]
+	msedgedriver!(No symbol) [0x7ff62fc74fc5]
+	msedgedriver!(No symbol) [0x7ff62fcb2a87]
+	msedgedriver!(No symbol) [0x7ff62fc6b9b7]
+	msedgedriver!(No symbol) [0x7ff62fcb07e2]
+	msedgedriver!(No symbol) [0x7ff62fc6b1fc]
+	msedgedriver!(No symbol) [0x7ff62fc6a456]
+	msedgedriver!(No symbol) [0x7ff62fc6b023]
+	msedgedriver!(No symbol) [0x7ff62fd38b69]
+	msedgedriver!(No symbol) [0x7ff62fd35103]
+	msedgedriver!(No symbol) [0x7ff62fd44d14]
+	msedgedriver!GetHandleVerifier [0x7ff62ff1c108+28898]
+	msedgedriver!GetHandleVerifier [0x7ff62ff248c6+31056]
+	msedgedriver!GetHandleVerifier [0x7ff62ff089c4+15154]
+	msedgedriver!GetHandleVerifier [0x7ff62ff08b09+15299]
+	msedgedriver!GetHandleVerifier [0x7ff62fef5d02+2492]
+	KERNEL32!BaseThreadInitThunk [0x7ffe61d0e8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffe62d2c48c+2c]
+
+2026-03-28 23:15:27,209 - ERROR - [001-2026-008221] Reintentos agotados. Reiniciando navegador.
+2026-03-28 23:15:39,639 - INFO - ─── DETENIDO ─── OK:75  Error:82  Omitidos:9
+2026-03-28 23:19:33,060 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:39:04,064 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:39:30,531 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:39:50,968 - INFO - Cargados 77 DUAs previos desde C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Movimientos_BOT\febrero26\DUAs_procesados_log_febrero26.txt.
+2026-03-28 23:39:50,969 - INFO - ─── INICIO DE PROCESAMIENTO ───────────────────────────
+2026-03-28 23:39:50,969 - INFO - Hoja seleccionada : 'febrero26'  →  clave: 'febrero26'
+2026-03-28 23:39:50,969 - INFO - Progreso guardado : {}
+2026-03-28 23:39:50,969 - INFO - Indice de inicio  : -1  (reanudando desde fila 1 / 57283)
+2026-03-28 23:39:50,969 - INFO - DUAs pendientes   : 57283
+2026-03-28 23:39:50,969 - INFO - ───────────────────────────────────────────────────────
+2026-03-28 23:39:59,812 - WARNING - DUA 001-2026-007989 ya procesado. Omitido.
+2026-03-28 23:39:59,932 - WARNING - DUA 001-2026-007990 ya procesado. Omitido.
+2026-03-28 23:40:01,872 - INFO - DUA 003-2026-009125 guardado.
+2026-03-28 23:40:01,955 - INFO - DUA 003-2026-009126 guardado.
+2026-03-28 23:40:03,896 - INFO - DUA 003-2026-009128 guardado.
+2026-03-28 23:40:04,135 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:40:05,493 - INFO - DUA 003-2026-009129 guardado.
+2026-03-28 23:40:07,500 - INFO - DUA 003-2026-009131 guardado.
+2026-03-28 23:40:07,842 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:40:09,173 - INFO - DUA 003-2026-009132 guardado.
+2026-03-28 23:40:11,072 - INFO - DUA 003-2026-009133 guardado.
+2026-03-28 23:40:11,579 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:40:12,560 - WARNING - [003-2026-009134] Intento 1/1: StaleElementReferenceException: Message: stale element reference: stale element not found
+  (Session info: MicrosoftEdge=146.0.3856.84); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#stale-element-reference-exception
+Stacktrace:
+	msedgedriver!GetHandleVerifier [0x7ff62ff01285+da15]
+	msedgedriver!GetHandleVerifier [0x7ff62ff012e4+da74]
+	msedgedriver!GetHandleVerifier [0x7ff63026f8dc+37c06c]
+	msedgedriver!(No symbol) [0x7ff62fc3d90e]
+	msedgedriver!(No symbol) [0x7ff62fc3ca84]
+	msedgedriver!(No symbol) [0x7ff62fc3dec7]
+	msedgedriver!(No symbol) [0x7ff62fc32f20]
+	msedgedriver!(No symbol) [0x7ff62fc3def8]
+	msedgedriver!(No symbol) [0x7ff62fc32f20]
+	msedgedriver!(No symbol) [0x7ff62fc31646]
+	msedgedriver!(No symbol) [0x7ff62fc34c5d]
+	msedgedriver!(No symbol) [0x7ff62fcb1184]
+	msedgedriver!(No symbol) [0x7ff62fc9586a]
+	msedgedriver!(No symbol) [0x7ff62fc6b9b7]
+	msedgedriver!(No symbol) [0x7ff62fcb07e2]
+	msedgedriver!(No symbol) [0x7ff62fc6b1fc]
+	msedgedriver!(No symbol) [0x7ff62fc6a456]
+	msedgedriver!(No symbol) [0x7ff62fc6b023]
+	msedgedriver!(No symbol) [0x7ff62fd38b69]
+	msedgedriver!(No symbol) [0x7ff62fd35103]
+	msedgedriver!(No symbol) [0x7ff62fd44d14]
+	msedgedriver!GetHandleVerifier [0x7ff62ff1c108+28898]
+	msedgedriver!GetHandleVerifier [0x7ff62ff248c6+31056]
+	msedgedriver!GetHandleVerifier [0x7ff62ff089c4+15154]
+	msedgedriver!GetHandleVerifier [0x7ff62ff08b09+15299]
+	msedgedriver!GetHandleVerifier [0x7ff62fef5d02+2492]
+	KERNEL32!BaseThreadInitThunk [0x7ffe61d0e8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffe62d2c48c+2c]
+
+2026-03-28 23:40:12,786 - INFO - DUA 003-2026-009134 guardado.
+2026-03-28 23:40:14,562 - ERROR - [003-2026-009134] Reintentos agotados. Reiniciando navegador.
+2026-03-28 23:40:14,838 - INFO - DUA 003-2026-009135 guardado.
+2026-03-28 23:40:14,846 - ERROR - [003-2026-009136] Error inesperado intento 1/1: ('Connection aborted.', ConnectionResetError(10054, 'Se ha forzado la interrupción de una conexión existente por el host remoto', None, 10054, None))
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\keylo\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\keylo\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\keylo\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\keylo\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\CHC_CONSULTORES\Repositorios\Talon_BOT\v2\src\core\processor.py", line 127, in process_dua
+    self._navigate_to_start()
+  File "D:\CHC_CONSULTORES\Repositorios\Talon_BOT\v2\src\core\processor.py", line 199, in _navigate_to_start
+    self.driver.get(self.flow.start_url)
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 363, in get
+    self.execute(Command.GET, {"url": url})
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 352, in execute
+    response = self.command_executor.execute(driver_command, params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 306, in execute
+    return self._request(command_info[0], url, body=data)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 326, in _request
+    response = self._conn.request(method, url, body=body, headers=headers)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\_request_methods.py", line 143, in request
+    return self.request_encode_body(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\_request_methods.py", line 278, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\poolmanager.py", line 443, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\util\retry.py", line 474, in increment
+    raise reraise(type(error), error, _stacktrace)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\util\util.py", line 38, in reraise
+    raise value.with_traceback(tb)
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\connectionpool.py", line 536, in _make_request
+    response = conn.getresponse()
+               ^^^^^^^^^^^^^^^^^^
+  File "D:\CHC_CONSULTORES\WebScrapping_APPS\Talon_BOT\.venv\Lib\site-packages\urllib3\connection.py", line 507, in getresponse
+    httplib_response = super().getresponse()
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\keylo\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 1428, in getresponse
+    response.begin()
+  File "C:\Users\keylo\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 331, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\keylo\AppData\Local\Programs\Python\Python312\Lib\http\client.py", line 292, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\keylo\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 707, in readinto
+    return self._sock.recv_into(b)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.ProtocolError: ('Connection aborted.', ConnectionResetError(10054, 'Se ha forzado la interrupción de una conexión existente por el host remoto', None, 10054, None))
+2026-03-28 23:40:16,969 - ERROR - [003-2026-009136] Reintentos agotados. Reiniciando navegador.
+2026-03-28 23:40:20,407 - INFO - DUA 003-2026-009137 guardado.
+2026-03-28 23:40:21,057 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F6BFD406B0>: Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión')': /session/5e96353baff27887659505086df3c360
+2026-03-28 23:40:22,831 - INFO - DUA 003-2026-009138 guardado.
+2026-03-28 23:40:24,630 - INFO - DUA 003-2026-009139 guardado.
+2026-03-28 23:40:25,140 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F6BFDF33E0>: Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión')': /session/5e96353baff27887659505086df3c360
+2026-03-28 23:40:26,463 - INFO - DUA 003-2026-009140 guardado.
+2026-03-28 23:40:28,397 - INFO - DUA 003-2026-009141 guardado.
+2026-03-28 23:40:29,231 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000001F6BFF37470>: Failed to establish a new connection: [WinError 10061] No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión')': /session/5e96353baff27887659505086df3c360
+2026-03-28 23:40:45,748 - INFO - ─── DETENIDO ─── OK:14  Error:2  Omitidos:2
+2026-03-28 23:41:34,090 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:48:14,009 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:48:19,171 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:48:19,171 - INFO - Configuracion guardada.
+2026-03-28 23:48:25,626 - INFO - ─── INICIO DE PROCESAMIENTO ───────────────────────────
+2026-03-28 23:48:25,626 - INFO - Hoja seleccionada : 'febrero26'  →  clave: 'febrero26'
+2026-03-28 23:48:25,626 - INFO - Progreso guardado : {'febrero26': 17}
+2026-03-28 23:48:25,626 - INFO - Indice de inicio  : 17  (reanudando desde fila 19 / 57283)
+2026-03-28 23:48:25,626 - INFO - DUAs pendientes   : 57265
+2026-03-28 23:48:25,626 - INFO - ───────────────────────────────────────────────────────
+2026-03-28 23:48:28,337 - INFO - Saltadas 18 filas ya procesadas (indices 0-17).
+2026-03-28 23:48:33,386 - INFO - DUA 003-2026-009142 guardado.
+2026-03-28 23:48:33,850 - INFO - DUA 003-2026-009143 guardado.
+2026-03-28 23:48:35,562 - INFO - DUA 003-2026-009144 guardado.
+2026-03-28 23:48:35,788 - INFO - DUA 003-2026-009145 guardado.
+2026-03-28 23:48:37,471 - INFO - DUA 003-2026-009148 guardado.
+2026-03-28 23:48:37,641 - INFO - DUA 003-2026-009151 guardado.
+2026-03-28 23:48:39,248 - INFO - DUA 005-2026-072259 guardado.
+2026-03-28 23:48:39,472 - INFO - DUA 005-2026-072260 guardado.
+2026-03-28 23:48:44,026 - INFO - ─── DETENIDO ─── OK:8  Error:0  Omitidos:0
+2026-03-28 23:49:42,330 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-28 23:49:42,331 - INFO - Configuracion guardada.
+2026-03-28 23:50:06,031 - INFO - ─── INICIO DE PROCESAMIENTO ───────────────────────────
+2026-03-28 23:50:06,031 - INFO - Hoja seleccionada : 'febrero26'  →  clave: 'febrero26'
+2026-03-28 23:50:06,031 - INFO - Progreso guardado : {'febrero26': 25}
+2026-03-28 23:50:06,032 - INFO - Indice de inicio  : 25  (reanudando desde fila 27 / 57283)
+2026-03-28 23:50:06,032 - INFO - DUAs pendientes   : 57257
+2026-03-28 23:50:06,032 - INFO - ───────────────────────────────────────────────────────
+2026-03-28 23:50:08,573 - INFO - Saltadas 26 filas ya procesadas (indices 0-25).
+2026-03-28 23:50:13,279 - INFO - DUA 005-2026-072262 guardado.
+2026-03-28 23:50:13,757 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:50:14,311 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:50:14,844 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:50:15,450 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:50:16,256 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:50:16,329 - WARNING - DUA 005-2026-072263 ya procesado. Omitido.
+2026-03-28 23:50:16,330 - INFO - DUA 005-2026-072263 guardado.
+2026-03-28 23:50:18,415 - INFO - DUA 005-2026-072265 guardado.
+2026-03-28 23:50:18,677 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:50:20,419 - WARNING - Connection pool is full, discarding connection: localhost. Connection pool size: 1
+2026-03-28 23:50:20,422 - INFO - DUA 005-2026-072266 guardado.
+2026-03-28 23:50:20,549 - WARNING - DUA 005-2026-072266 ya procesado. Omitido.
+2026-03-28 23:50:22,439 - INFO - DUA 005-2026-072267 guardado.
+2026-03-28 23:50:22,568 - INFO - DUA 005-2026-072268 guardado.
+2026-03-28 23:50:24,320 - INFO - DUA 005-2026-072269 guardado.
+2026-03-28 23:50:24,520 - INFO - DUA 005-2026-072270 guardado.
+2026-03-28 23:50:26,266 - INFO - DUA 005-2026-072272 guardado.
+2026-03-28 23:50:26,468 - INFO - DUA 005-2026-072274 guardado.
+2026-03-28 23:50:30,998 - INFO - ─── DETENIDO ─── OK:10  Error:0  Omitidos:2
+2026-03-29 02:23:11,838 - INFO - Archivo de CAPTCHAs cargado (191 entradas).
+2026-03-29 02:23:17,359 - INFO - Progreso reiniciado manualmente.
