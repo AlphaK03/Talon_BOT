@@ -1,27 +1,21 @@
-"""talon_flow.py — Flujo para consultar los MOVIMIENTOS de una DUA en el portal TICA.
+"""talon_flow.py — Flujo para consultar los TALONES (tributos) de una DUA en el portal TICA.
 
 Implementa BaseFlow para la URL:
     https://portaltica.hacienda.go.cr/TicaExterno/hcimppon.aspx
 
-Navegación:
-  1. Formulario principal (Aduana / Año / Número / CAPTCHA) → click MANAERMAR
-  2. Espera la tabla SubstkContainerTbl (resultados de movimientos)
-  3. Extrae las filas: Deposito, Año, Movimiento, Tipo_de_Movimiento,
-     Cantidad_de_Bultos_asociada — agrupa y suma por combinación única.
+Navegación (manejada por PlaywrightDUAProcessor):
+  1. Formulario principal (Aduana / Año / Número / CAPTCHA) → click DETALLE
+  2. Espera botón LIQDUA → click LIQDUA
+  3. Espera tabla Sftributos1ContainerTbl + span_CODI_ADUAN_0001
+  4. extract_data() parsea el resultado
 
-Diferencias respecto a DetallesFlow:
-  - Botón: MANAERMAR (no DETALLE)
-  - No hay página intermedia — la tabla aparece directamente
-  - Retorna múltiples filas por DUA (una por movimiento)
+Retorna múltiples filas por DUA (una por tributo):
+  Codigo_Aduana, Año, Numero, Tributo, Descripcion_tributo, Valor_MN
 """
 import logging
-import time
 
 import pandas as pd
 from bs4 import BeautifulSoup
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 from flows.base_flow import BaseFlow
 
@@ -48,61 +42,6 @@ class XTalonesFlow(BaseFlow):
     @property
     def start_url(self) -> str:
         return self._START_URL
-
-    def fill_form(self, driver, row, captcha_text: str, timeout: int) -> None:
-        driver.execute_script("document.body.style.zoom='25%'")
-
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.ID, 'vVCODI_ADUA'))
-        )
-
-        for field_id, value in [
-            ('vVCODI_ADUA', str(row['Aduana'])),
-            ('vVANO_PRE', str(row['Año'])),
-            ('vVNUME_CORR', str(row['Número'])),
-            ('_cfield', captcha_text),
-        ]:
-            el = driver.find_element(By.ID, field_id)
-            el.clear()
-            el.send_keys(value)
-
-        btn = WebDriverWait(driver, timeout).until(
-            EC.element_to_be_clickable((By.NAME, 'DETALLE'))
-        )
-        try:
-            btn.click()
-        except Exception:
-            driver.execute_script("arguments[0].click();", btn)
-        time.sleep(0.7)
-
-    def wait_for_result(self, driver, timeout: int) -> None:
-        time.sleep(0.6)
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.NAME, 'LIQDUA'))
-        )
-
-        btn = WebDriverWait(driver, timeout).until(
-            EC.element_to_be_clickable((By.NAME, 'LIQDUA'))
-        )
-        try:
-            btn.click()
-        except Exception:
-            driver.execute_script("arguments[0].click();", btn)
-
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.ID, 'Sftributos1ContainerTbl'))
-        )
-        time.sleep(1)
-
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.ID, 'span_CODI_ADUAN_0001'))
-        )
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.ID, 'span_ANO_PRESE_0001'))
-        )
-        WebDriverWait(driver, timeout).until(
-            EC.presence_of_element_located((By.ID, 'span_NUME_CORRE_0001'))
-        )
 
     def extract_data(self, page_source: str) -> pd.DataFrame:
         soup = BeautifulSoup(page_source, 'html.parser')

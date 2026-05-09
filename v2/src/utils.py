@@ -26,12 +26,10 @@ def get_names_path() -> str:
 _DEFAULT_MACHINE = {
     "base_path":        "",
     "output_base_path": "",
-    "edge_driver_path": "",
     "max_retries":      3,
     "timeout":          10,
     "cant_hilos":       1,
-    "screenshot_path":  "screenshots",
-    "headless":         False,
+    "headless":         True,
 }
 
 _DEFAULT_SESSION = {
