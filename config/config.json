@@ -13,5 +13,10 @@
     "firefox_driver_path": "C:/WebDriver/geckodriver.exe",
     "max_retries": 3,
     "timeout": 10,
-    "cant_hilos": 5
+    "cant_hilos": 3,
+    "output_csv": "C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Talon_BOT\\octubre24\\Duas_procesados_octubre24.csv",
+    "failed_duas": "C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Talon_BOT\\octubre24\\DUAs_fallidas_octubre24.txt",
+    "no_rows_duas": "C:/Users/keylo/CHC Consultores/CHC-CONSULTORES - Automatizacion TICA/Datos_Generales/Datos_Procesados/Talon_BOT\\octubre24\\DUAs_sin_filas_octubre24.txt",
+    "extracted_file_path": "data\\Datos_Cargados\\octubre24.xlsx",
+    "max_index_processed_octubre24": 1389
 }
