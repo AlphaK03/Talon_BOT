@@ -1,7 +1,7 @@
 """talon_flow.py — Flujo para consultar los TALONES (tributos) de una DUA en el portal TICA.
 
 Implementa BaseFlow para la URL:
-    https://portaltica.hacienda.go.cr/TicaExterno/hcimppon.aspx
+    https://ticaconsultas.hacienda.go.cr/Tica/hcimppon.aspx
 
 Navegación (manejada por PlaywrightDUAProcessor):
   1. Formulario principal (Aduana / Año / Número / CAPTCHA) → click DETALLE
@@ -27,7 +27,7 @@ class NoRowsException(Exception):
 
 class XTalonesFlow(BaseFlow):
 
-    _START_URL = 'https://portaltica.hacienda.go.cr/TicaExterno/hcimppon.aspx'
+    _START_URL = 'https://ticaconsultas.hacienda.go.cr/Tica/hcimppon.aspx'
 
     @staticmethod
     def _clean(text: str) -> str:

@@ -20,7 +20,7 @@ import requests
 
 from flows.base_flow import BaseFlow
 
-_PORTAL_BASE = 'https://portaltica.hacienda.go.cr'
+_PORTAL_BASE = 'https://ticaconsultas.hacienda.go.cr'
 
 
 async def _wait_for_portal_async(url: str, interval: int = 10) -> None:
@@ -75,6 +75,11 @@ class PlaywrightDUAProcessor:
 
         n_workers = self.machine.get('cant_hilos', 1)
         headless  = self.machine.get('headless', True)
+
+        import sys
+        if getattr(sys, 'frozen', False):
+            local_appdata = os.environ.get('LOCALAPPDATA', '')
+            os.environ['PLAYWRIGHT_BROWSERS_PATH'] = os.path.join(local_appdata, 'ms-playwright')
 
         # Cola con los índices pendientes (memory-efficient para datasets grandes)
         queue: asyncio.Queue = asyncio.Queue()
@@ -177,12 +182,12 @@ class PlaywrightDUAProcessor:
 
     async def _navigate(self, page, timeout_ms: int) -> None:
         try:
-            await page.goto(self.flow.start_url, timeout=timeout_ms)
+            await page.goto(self.flow.start_url, timeout=timeout_ms, wait_until='domcontentloaded')
         except Exception as e:
             if 'ERR_NAME_NOT_RESOLVED' in str(e) or 'net::ERR' in str(e):
                 logging.warning("Error de red. Esperando portal...")
                 await _wait_for_portal_async(self.flow.start_url)
-                await page.goto(self.flow.start_url, timeout=timeout_ms)
+                await page.goto(self.flow.start_url, timeout=timeout_ms, wait_until='domcontentloaded')
             else:
                 raise
 
@@ -198,13 +203,10 @@ class PlaywrightDUAProcessor:
 
     async def _fill_form(self, page, row, captcha_text: str, timeout_ms: int) -> None:
         """Llena el formulario del portal TICA y hace click en DETALLE."""
-        # Descartar página de rectificación de GeneXus si aparece
-        try:
-            await page.wait_for_selector('[name="Volver"]', timeout=1500)
+        # Descartar página de rectificación de GeneXus si aparece (snapshot sin espera)
+        if await page.locator('[name="Volver"]').is_visible():
             await page.click('[name="Volver"]')
             await page.wait_for_selector('#vVCODI_ADUA', timeout=timeout_ms)
-        except Exception:
-            pass
 
         await page.evaluate("document.body.style.zoom='25%'")
         await page.wait_for_selector('#vVCODI_ADUA', timeout=timeout_ms)
@@ -222,6 +224,7 @@ class PlaywrightDUAProcessor:
     async def _wait_result(self, page, timeout_ms: int) -> None:
         """Espera LIQDUA, lo clica, y confirma que la tabla de tributos cargó."""
         await page.wait_for_selector('[name="LIQDUA"]', timeout=timeout_ms)
+        await page.wait_for_load_state('domcontentloaded', timeout=timeout_ms)
         await page.click('[name="LIQDUA"]')
         await page.wait_for_selector('#Sftributos1ContainerTbl', timeout=timeout_ms)
         await page.wait_for_selector('#span_CODI_ADUAN_0001',   timeout=timeout_ms)

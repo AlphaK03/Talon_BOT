@@ -22,7 +22,6 @@ from selenium.common.exceptions import (
     NoSuchElementException, TimeoutException, StaleElementReferenceException
 )
 
-# Definir excepción personalizada para el caso de no encontrar filas
 class NoRowsException(Exception):
     pass
 
@@ -31,6 +30,27 @@ def set_zoom_level(driver, zoom_percentage):
     """Ajustar el nivel de zoom de la página."""
     zoom_script = f"document.body.style.zoom='{zoom_percentage}%'"
     driver.execute_script(zoom_script)
+
+
+import requests
+
+def esperar_disponibilidad_pagina(url, intervalo=10, max_intentos=0):
+    intentos = 0
+    while True:
+        try:
+            response = requests.get(url, timeout=5)
+            if response.status_code == 200:
+                logging.info(f"La página {url} está disponible nuevamente.")
+                return
+        except requests.RequestException:
+            pass
+        intentos += 1
+        logging.warning(f"La página {url} aún no está disponible. Intento {intentos}. Reintentando en {intervalo} segundos...")
+        time.sleep(intervalo)
+        if max_intentos and intentos >= max_intentos:
+            logging.error(f"No se pudo acceder a la página {url} después de {max_intentos} intentos.")
+            break
+
 
 
 class DUAProcessor:
@@ -42,19 +62,15 @@ class DUAProcessor:
         self.driver = self.get_browser_instance()
         self.max_index_processed = -1
 
-        # Crear la carpeta de capturas de pantalla si no existe
         self.screenshot_path = self.config.get('screenshot_path', 'screenshots')
         if not os.path.exists(self.screenshot_path):
             os.makedirs(self.screenshot_path)
-#funcional hasta aqui
+
     def get_browser_instance(self):
         options = EdgeOptions()
 
-        # Ejecutar en modo con cabeza (interfaz gráfica)
-        # Elimina o comenta la siguiente línea si no deseas el modo headless
         options.add_argument('--headless')
 
-        # Deshabilitar características innecesarias
         options.add_argument('--disable-extensions')
         options.add_argument('--disable-popup-blocking')
         options.add_argument('--disable-notifications')
@@ -66,23 +82,18 @@ class DUAProcessor:
         options.add_argument('--disable-features=NetworkService')
         options.add_argument('--disable-blink-features=AutomationControlled')
 
-        # Crear instancia del navegador Edge con Selenium Wire
         service = EdgeService(executable_path=self.config['edge_driver_path'])
         driver = webdriver.Edge(service=service, options=options)
 
-        # Definir tipos de recursos a bloquear (bloqueamos imágenes, CSS, fuentes, pero no JavaScript)
         blocked_extensions = ['.png', '.jpg', '.jpeg', '.gif', '.css', '.woff', '.woff2', '.ttf', '.otf', '.svg']
 
-        # Función para interceptar y bloquear solicitudes
         def interceptor(request):
             if any(request.path.endswith(ext) for ext in blocked_extensions):
                 request.abort()
 
-        # Asignar el interceptor
         driver.request_interceptor = interceptor
 
-        # Navegar a la página inicial
-        driver.get('https://ticaconsultas.hacienda.go.cr/Tica/hcimppon.aspx')
+        #driver.get('https://portaltica.hacienda.go.cr/TicaExterno/hcimppon.aspx')
         return driver
 
     def process_dua(self, index, row, progress_callback):
@@ -99,7 +110,7 @@ class DUAProcessor:
                 try:
                     if page_stage == "main":
                         if not self.process_main_page(row):
-                            break  # Salir si falla el procesamiento
+                            break
                         else:
                             page_stage = "impuestos"
 
@@ -125,14 +136,13 @@ class DUAProcessor:
                                     progress_callback(self.max_index_processed)
                             break
                 except NoRowsException as e:
-                    # Manejar el caso donde no se encontraron filas
                     logging.info(f"DUA {dua_number} sin filas en la tabla de datos.")
                     self.log_dua_no_rows(dua_number)
                     with self.lock:
                         if index > self.max_index_processed:
                             self.max_index_processed = index
                             progress_callback(self.max_index_processed)
-                    break  # No reintentar el DUA
+                    break
                 except Exception as e:
                     logging.exception(f"Error general al procesar DUA {dua_number}: {e}")
                     self.driver.refresh()
@@ -140,11 +150,10 @@ class DUAProcessor:
                 if self.stop_event.is_set():
                     return
 
-            self.driver.get('https://ticaconsultas.hacienda.go.cr/Tica/hcimppon.aspx')
+            self.driver.get('https://portaltica.hacienda.go.cr/TicaExterno/hcimppon.aspx')
 
         except Exception as e:
             logging.exception(f"Error general al procesar DUA {dua_number}: {e}")
-            # El DUA fallido ya ha sido registrado por los métodos internos
 
     def process_main_page(self, row):
         dua_number = row['NroDUA']
@@ -155,13 +164,9 @@ class DUAProcessor:
             retries = 0
             while retries < max_retries and not self.stop_event.is_set():
                 try:
-                    # Navegar a la página principal
-                    self.driver.get('https://ticaconsultas.hacienda.go.cr/Tica/hcimppon.aspx')
-
-                    # Establecer el zoom de la página al 25% para que todo sea visible sin scroll
+                    self.driver.get('https://portaltica.hacienda.go.cr/TicaExterno/hcimppon.aspx')
                     set_zoom_level(self.driver, 25)
 
-                    # Esperar a que el captcha esté presente
                     captcha_image_element = WebDriverWait(self.driver, self.config['timeout']).until(
                         EC.presence_of_element_located((By.XPATH, "//div[@id='captchaImage']/img"))
                     )
@@ -169,7 +174,6 @@ class DUAProcessor:
                     captcha_word = self.names_df.loc[self.names_df['Path'] == captcha_url, 'Word'].values
                     captcha_text = captcha_word[0] if len(captcha_word) > 0 else ''
 
-                    # Ingresar los datos del DUA
                     WebDriverWait(self.driver, self.config['timeout']).until(
                         EC.presence_of_element_located((By.ID, 'vVCODI_ADUA'))
                     )
@@ -182,32 +186,38 @@ class DUAProcessor:
                     self.driver.find_element(By.ID, '_cfield').clear()
                     self.driver.find_element(By.ID, '_cfield').send_keys(captcha_text)
 
-                    # Intentar hacer clic en el botón 'DETALLE' sin necesidad de desplazamiento
                     detalle_button = WebDriverWait(self.driver, self.config['timeout']).until(
                         EC.element_to_be_clickable((By.NAME, 'DETALLE'))
                     )
-
                     try:
-                        # Intentar hacer clic en el botón 'DETALLE'
                         detalle_button.click()
+                        time.sleep(0.7)
                     except WebDriverException:
-                        # Si otro elemento está cubriendo el botón, intentamos usar JavaScript para forzar el clic
-                        logging.warning(f"Elemento 'DETALLE' está bloqueado, intentando forzar el clic con JavaScript.")
+                        logging.warning("Elemento 'DETALLE' está bloqueado, intentando forzar el clic con JavaScript.")
                         self.driver.execute_script("arguments[0].click();", detalle_button)
 
-                    # Esperar a que la siguiente página cargue
                     WebDriverWait(self.driver, self.config['timeout']).until(
                         EC.presence_of_element_located((By.NAME, 'LIQDUA'))
                     )
                     return True
 
-                except (
-                TimeoutException, NoSuchElementException, StaleElementReferenceException, WebDriverException) as e:
+                except WebDriverException as e:
+                    if "ERR_NAME_NOT_RESOLVED" in str(e):
+                        logging.warning("Error DNS: página no disponible. Esperando disponibilidad...")
+                        esperar_disponibilidad_pagina("https://portaltica.hacienda.go.cr/TicaExterno/hcimppon.aspx",
+                                                      intervalo=10)
+                        continue
                     retries += 1
                     logging.warning(
-                        f"Error al procesar la página principal para DUA {dua_number}: {e}. Reintentando ({retries}/{max_retries})..."
-                    )
+                        f"WebDriverException para DUA {dua_number}: {e}. Reintentando ({retries}/{max_retries})...")
                     continue
+
+                except (TimeoutException, NoSuchElementException, StaleElementReferenceException) as e:
+                    retries += 1
+                    logging.warning(
+                        f"Error al procesar la página principal para DUA {dua_number}: {e}. Reintentando ({retries}/{max_retries})...")
+                    continue
+
                 except Exception as e:
                     self.driver.save_screenshot(f'error_{dua_number}.png')
                     logging.error(f"Error en process_main_page para DUA {dua_number}: {e}")
@@ -219,7 +229,7 @@ class DUAProcessor:
             return False
 
         except Exception as e:
-            logging.error(f"Error en la página principal para DUA {dua_number}: {e}")
+            logging.error(f"Error inesperado en process_main_page para DUA {dua_number}: {e}")
             self.log_failed_dua(dua_number)
             return False
 
@@ -232,27 +242,24 @@ class DUAProcessor:
 
             while retry_count < max_retries and not self.stop_event.is_set():
                 try:
-                    # Establecer el zoom de la página al 25% para que todO sea visible sin scroll
                     set_zoom_level(self.driver, 25)
 
-                    # Comprobar si estamos en la página principal (posiblemente debido a un captcha)
                     if self.is_captcha_present():
                         logging.warning(f"Se detectó captcha, reintentando process_main_page...")
                         self.process_main_page(self.current_row)
                         continue
 
-                    # Esperar a que el botón de Impuestos esté disponible y sea clicable
+                    # Esperar a que el botón de Impuestos esté disponible
+                    time.sleep(0.6)
                     impuestos_button = WebDriverWait(self.driver, self.config['timeout']).until(
                         EC.element_to_be_clickable((By.NAME, 'LIQDUA'))
                     )
 
-                    # Desplazar la vista hasta el botón y asegurarse de que no esté cubierto
                     self.driver.execute_script("arguments[0].scrollIntoView(true);", impuestos_button)
 
-                    # Intentar hacer clic en el botón 'Impuestos'
                     impuestos_button.click()
 
-                    # Esperar a que la tabla de impuestos esté disponible
+                    # Esperar a que la tabla esté disponible
                     WebDriverWait(self.driver, self.config['timeout']).until(
                         EC.presence_of_element_located((By.ID, 'Sftributos1ContainerTbl'))
                     )
@@ -262,19 +269,17 @@ class DUAProcessor:
                     retry_count += 1
                     logging.warning(
                         f"Elemento 'Impuestos' no disponible en el DOM, reintentando ({retry_count}/{max_retries})...")
-                    continue  # Volver a intentar encontrar el elemento si está obsoleto
+                    continue
 
                 except WebDriverException as e:
                     retry_count += 1
                     logging.warning(
                         f"Error al hacer clic en 'Impuestos': {e}. Reintentando ({retry_count}/{max_retries})...")
 
-                    # Guardar captura de pantalla para ayudar en la depuración
                     screenshot_filename = f'error_impuestos_{self.current_dua_number}_{retry_count}.png'
                     screenshot_filepath = os.path.join(self.screenshot_path, screenshot_filename)
                     self.driver.save_screenshot(screenshot_filepath)
 
-                    # Si estamos en la página principal, volver a intentar desde allí
                     if self.is_captcha_present():
                         logging.warning(f"Se detectó captcha, reintentando process_main_page...")
                         self.process_main_page(self.current_row)
@@ -296,7 +301,7 @@ class DUAProcessor:
             WebDriverWait(self.driver, self.config['timeout']).until(
                 EC.presence_of_element_located((By.ID, 'Sftributos1ContainerTbl'))
             )
-            time.sleep(1)  # Pausa corta para asegurarnos que la página esté cargada
+            time.sleep(1)
             new_data = self.extract_important_data(dua_number)
             if new_data is None:
                 logging.info(f"DUA {dua_number} no tiene datos en la página.")
@@ -326,7 +331,6 @@ class DUAProcessor:
         if self.stop_event.is_set():
             return None
         try:
-            # Esperar a que los elementos del número del DUA estén presentes
             WebDriverWait(self.driver, self.config['timeout']).until(
                 EC.presence_of_element_located((By.ID, 'span_CODI_ADUAN_0001'))
             )
@@ -380,7 +384,7 @@ class DUAProcessor:
                     'Tributo': columns[3].text.strip(),
                     'Descripcion_tributo': columns[4].text.strip(),
                     'Valor_MN': columns[5].text.strip(),
-                    'numero_del_dua': numero_del_dua  # Asignar el valor extraído desde la página
+                    'numero_del_dua': numero_del_dua
                 }
                 extracted_data.append(data)
 
@@ -441,7 +445,6 @@ class DUAProcessor:
 
     def wait_for_page_to_load(driver, timeout=10):
         try:
-            # Esperar a que el 'velo' desaparezca (puedes ajustar el selector según sea necesario)
             WebDriverWait(driver, timeout).until(
                 EC.invisibility_of_element_located((By.CSS_SELECTOR, "div[style*='block']"))
             )

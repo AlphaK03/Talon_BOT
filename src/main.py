@@ -36,19 +36,15 @@ def update_output_paths(config):
 
 
 def main():
-    # Configurar logging
     setup_logging()
 
-    # Cargar configuración
     config = load_config()
 
-    # Actualizar rutas de salida en config
     update_output_paths(config)
 
     # Normalizar el sheet_name para usarlo en las claves
     normalized_sheet_name = normalize_sheet_name(config['sheet_name'])
 
-    # Generar la clave para max_index_processed
     max_index_key = f'max_index_processed_{normalized_sheet_name}'
 
     # Variables globales y estado
@@ -56,16 +52,13 @@ def main():
     stop_event = threading.Event()
     max_index_processed = config.get(max_index_key, -1)
 
-    # Crear la aplicación Tkinter
     root = tk.Tk()
     root.title("CHC CONSULTORES BOT - Talon")
 
-    # Crear variables de Tkinter asociadas a 'root'
     progress_var = tk.DoubleVar(master=root)
     progress_text_var = tk.StringVar(master=root)
     progress_text_var.set("Esperando para iniciar...")
 
-    # Manejar el cierre de la ventana
     def on_closing():
         nonlocal stop_event, root
         if threading.active_count() > 1:
@@ -77,7 +70,6 @@ def main():
 
     def check_threads():
         if threading.active_count() > 1:
-            # Aún hay hilos activos, volver a comprobar en 100ms
             root.after(100, check_threads)
         else:
             root.destroy()
@@ -93,17 +85,14 @@ def main():
 
     names_df = pd.read_excel(names_file_path)
 
-    # Variables para los datos
     duals_df = None
     extracted_file_path = config.get('extracted_file_path', '')
 
-    # Si existe el archivo extraído, cargar los datos desde allí
     if extracted_file_path and os.path.exists(extracted_file_path):
         duals_df = pd.read_excel(extracted_file_path)
         duals_df[['Aduana', 'Año', 'Número']] = duals_df['NroDUA'].str.split('-', expand=True)
         progress_text_var.set(f"Archivo cargado: {extracted_file_path}")
     else:
-        # Si no existe, inicializar variables
         progress_text_var.set("No se ha seleccionado ningún archivo de DUAs.")
         max_index_processed = -1
 
@@ -118,12 +107,10 @@ def main():
             duals_df[['Aduana', 'Año', 'Número']] = duals_df['NroDUA'].str.split('-', expand=True)
             progress_text_var.set(f"Archivo cargado: {totals_file_path}")
 
-            # Actualizar el sheet_name y las claves correspondientes
             sheet_name = config['sheet_name']
             normalized_sheet_name = normalize_sheet_name(sheet_name)
             max_index_key = f'max_index_processed_{normalized_sheet_name}'
 
-            # Obtener el max_index_processed para la nueva hoja
             max_index_processed = config.get(max_index_key, -1)
 
             # Actualizar la configuración y guardar
@@ -138,7 +125,6 @@ def main():
         if not os.path.exists(extracted_data_folder):
             os.makedirs(extracted_data_folder)
 
-        # Usa el nombre de la hoja para el nombre del archivo
         extracted_file_name = f"{sheet_name}.xlsx"
         extracted_file_path = os.path.join(extracted_data_folder, extracted_file_name)
 
@@ -152,17 +138,14 @@ def main():
     def update_progress(index):
         nonlocal max_index_processed, config, root, max_index_key
         progress = (index + 1) / len(duals_df) * 100
-        max_index_processed = index  # Actualizar el índice máximo procesado
+        max_index_processed = index
 
-        # Función para actualizar la interfaz en el hilo principal
         def gui_update():
             progress_var.set(progress)
             progress_text_var.set(f"Procesando DUAs: {index + 1}/{len(duals_df)} ({progress:.2f}%)")
 
-        # Programar la actualización en el hilo principal
         root.after(0, gui_update)
 
-        # Guardar max_index_processed en config.json bajo la clave correcta
         config[max_index_key] = max_index_processed
         save_config(config)
 
@@ -214,7 +197,6 @@ def main():
             else:
                 progress_text_var.set("Proceso completado")
 
-            # Guardar max_index_processed en config.json bajo la clave correcta
             config[max_index_key] = max_index_processed
             save_config(config)
 
